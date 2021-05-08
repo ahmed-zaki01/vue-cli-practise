@@ -1,7 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
   <div>
-    <input type="text" ref="myInput" />
     <button @click="handleInput">Show Modal</button>
   </div>
   <modal @getModalRef="saveModalRef" />
@@ -21,10 +20,7 @@ export default {
   },
   methods: {
     handleInput() {
-      this.$refs.myInput.focus();
-      if (this.modalRef) {
-        this.modalRef.style.display = "block";
-      }
+      this.modalRef.style.display = "block";
     },
     saveModalRef(value) {
       this.modalRef = value;
