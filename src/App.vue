@@ -2,21 +2,32 @@
   <h1>{{ title }}</h1>
   <div>
     <input type="text" ref="myInput" />
-    <button @click="handleInput">click me</button>
+    <button @click="handleInput">Show Modal</button>
   </div>
+  <modal @getModalRef="saveModalRef" />
 </template>
 
 <script>
+import Modal from "./components/Modal";
+
 export default {
   name: "App",
+  components: { Modal },
   data() {
     return {
       title: "This is my first vue app :)",
+      modalRef: "",
     };
   },
   methods: {
     handleInput() {
       this.$refs.myInput.focus();
+      if (this.modalRef) {
+        this.modalRef.style.display = "block";
+      }
+    },
+    saveModalRef(value) {
+      this.modalRef = value;
     },
   },
 };
