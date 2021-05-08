@@ -1,17 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>{{ title }}</h1>
+  <div>
+    <input type="text" ref="myInput" />
+    <button @click="handleInput">click me</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    return {
+      title: "This is my first vue app :)",
+    };
+  },
+  methods: {
+    handleInput() {
+      this.$refs.myInput.focus();
+    },
+  },
+};
 </script>
 
 <style>
@@ -22,5 +30,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h1 {
+  display: inline-block;
+  border-bottom: 1px solid #555;
+  padding: 5px 10px;
 }
 </style>
