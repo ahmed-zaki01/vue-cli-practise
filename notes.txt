@@ -5,3 +5,4 @@
 - (v-bind) = : & (v-on) = @ for example v-bind:class = :class & v-on:click = @click
 
 - $emit property used to invoke a function from the child to the parent component.
+

@@ -4,7 +4,12 @@
     <button @click="handleInput">Show Modal</button>
   </div>
   <p>hello from app</p>
-  <modal @getModalRef="saveModalRef" />
+  <modal
+    @getModalRef="saveModalRef"
+    :header="header"
+    :text="text"
+    theme="sale"
+  />
 </template>
 
 <script>
@@ -16,6 +21,8 @@ export default {
   data() {
     return {
       title: "This is my first vue app :)",
+      header: "modal title",
+      text: "modal content",
       modalRef: "",
     };
   },

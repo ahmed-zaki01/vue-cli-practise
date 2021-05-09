@@ -1,12 +1,12 @@
 <template>
   <div class="modal-container" ref="modal">
     <div class="backdrop">
-      <div class="modal">
+      <div class="modal" :class="{ sale: theme === 'sale' }">
         <div class="modal-header">
-          <h1>Modal Title</h1>
+          <h1>{{ header }}</h1>
         </div>
         <div class="modal-content">
-          <p>Modal Content</p>
+          <p>{{ text }}</p>
         </div>
         <div class="modal-footer">
           <button @click="closeModal">Close</button>
@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  props: ["header", "text", "theme"],
   methods: {
     closeModal() {
       this.$refs.modal.style.display = "none";
@@ -50,5 +51,13 @@ export default {
 
 .modal-content p {
   font-style: normal;
+}
+
+.modal.sale {
+  background: crimson;
+}
+
+.modal.sale h1 {
+  color: blanchedalmond;
 }
 </style>
