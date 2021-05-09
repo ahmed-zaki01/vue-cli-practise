@@ -1,8 +1,9 @@
 <template>
-  <h1>{{ title }}</h1>
+  <h1 id="app-title">{{ title }}</h1>
   <div>
     <button @click="handleInput">Show Modal</button>
   </div>
+  <p>hello from app</p>
   <modal @getModalRef="saveModalRef" />
 </template>
 
@@ -39,7 +40,7 @@ export default {
   margin-top: 60px;
 }
 
-h1 {
+h1#app-id {
   display: inline-block;
   border-bottom: 1px solid #555;
   padding: 5px 10px;

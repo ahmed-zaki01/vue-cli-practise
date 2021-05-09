@@ -1,0 +1,7 @@
+- use of scoped can affect on the performance as vue needs to the "data" property key to each element of the component.
+
+- (v-if) removes the element from the dom while, (v-show) hide the element from the dom by the css display style.
+
+- (v-bind) = : & (v-on) = @ for example v-bind:class = :class & v-on:click = @click
+
+- $emit property used to invoke a function from the child to the parent component.

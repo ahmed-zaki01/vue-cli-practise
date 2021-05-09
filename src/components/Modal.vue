@@ -1,9 +1,16 @@
 <template>
-  <div class="modal" ref="modal">
+  <div class="modal-container" ref="modal">
     <div class="backdrop">
-      <div class="modal-content">
-        <p>Modal Content</p>
-        <button @click="closeModal">Close</button>
+      <div class="modal">
+        <div class="modal-header">
+          <h1>Modal Title</h1>
+        </div>
+        <div class="modal-content">
+          <p>Modal Content</p>
+        </div>
+        <div class="modal-footer">
+          <button @click="closeModal">Close</button>
+        </div>
       </div>
     </div>
   </div>
@@ -20,13 +27,8 @@ export default {
 };
 </script>
 
-<style>
-body {
-  margin: 0;
-  padding: 0;
-}
-
-.modal-content {
+<style scoped>
+.modal {
   width: 400px;
   padding: 20px;
   margin: 100px auto;
@@ -40,5 +42,13 @@ body {
   position: fixed;
   top: 0;
   background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-header h1 {
+  color: cornflowerblue;
+}
+
+.modal-content p {
+  font-style: normal;
 }
 </style>
