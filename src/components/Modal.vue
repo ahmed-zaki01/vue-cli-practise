@@ -2,13 +2,16 @@
   <div class="modal-container" ref="modal">
     <div class="backdrop" @click.self="closeModal">
       <div class="modal" :class="{ sale: theme === 'sale' }">
-        <div class="modal-header">
-          <h1>{{ header }}</h1>
+        <div class="modal-header" style="text-align: left">
+          <h1>{{ title }}</h1>
         </div>
         <div class="modal-content">
-          <p>{{ text }}</p>
+          <p>
+            <slot>This is the default content!</slot>
+            <slot name="content"></slot>
+          </p>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" style="text-align: right">
           <button @click="closeModal">Close</button>
         </div>
       </div>
@@ -18,7 +21,7 @@
 
 <script>
 export default {
-  props: ["header", "text", "theme"],
+  props: ["title", "theme"],
   methods: {
     closeModal() {
       this.$emit("close");
@@ -28,6 +31,14 @@ export default {
 </script>
 
 <style scoped>
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .modal {
   width: 400px;
   padding: 20px;
@@ -36,12 +47,10 @@ export default {
   border-radius: 5px;
 }
 
-.backdrop {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  background: rgba(0, 0, 0, 0.5);
+.modal-header,
+.modal-content,
+.modal-footer {
+  padding: 15px;
 }
 
 .modal-header h1 {
@@ -58,5 +67,18 @@ export default {
 
 .modal.sale h1 {
   color: blanchedalmond;
+}
+
+.modal-footer button {
+  background: rgb(106, 107, 47);
+  color: azure;
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.modal-footer button:hover {
+  background: rgba(106, 107, 47, 0.8);
 }
 </style>
