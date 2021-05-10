@@ -1,15 +1,12 @@
 <template>
   <h1 id="app-title">{{ title }}</h1>
   <div>
-    <button @click="handleInput">Show Modal</button>
+    <button @click="toggleModal">Show Modal</button>
   </div>
   <p>hello from app</p>
-  <modal
-    @getModalRef="saveModalRef"
-    :header="header"
-    :text="text"
-    theme="sale"
-  />
+  <div v-if="showModal">
+    <modal @close="toggleModal" :header="header" :text="text" theme="sale" />
+  </div>
 </template>
 
 <script>
@@ -23,15 +20,12 @@ export default {
       title: "This is my first vue app :)",
       header: "modal title",
       text: "modal content",
-      modalRef: "",
+      showModal: false,
     };
   },
   methods: {
-    handleInput() {
-      this.modalRef.style.display = "block";
-    },
-    saveModalRef(value) {
-      this.modalRef = value;
+    toggleModal() {
+      this.showModal = !this.showModal;
     },
   },
 };

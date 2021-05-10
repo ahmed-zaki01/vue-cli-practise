@@ -1,6 +1,6 @@
 <template>
   <div class="modal-container" ref="modal">
-    <div class="backdrop">
+    <div class="backdrop" @click.self="closeModal">
       <div class="modal" :class="{ sale: theme === 'sale' }">
         <div class="modal-header">
           <h1>{{ header }}</h1>
@@ -21,8 +21,7 @@ export default {
   props: ["header", "text", "theme"],
   methods: {
     closeModal() {
-      this.$refs.modal.style.display = "none";
-      this.$emit("getModalRef", this.$refs.modal);
+      this.$emit("close");
     },
   },
 };
